@@ -17,7 +17,7 @@
       "CKEditorPHP": "",
       "CKEditorPHP\\view": "view",
       "CKEditorPHP\\core": "core",
-	  "CKEditorPHP\\plugins":"plugins",
+	  "CKEditorPHP\\plugins":"plugins"
     }
   }
 }
