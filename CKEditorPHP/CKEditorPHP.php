@@ -41,7 +41,6 @@ class CKEditorPHP {
 		$this->extraPlugins = new Collection();
 		$this->contentsCss  = new ContentsCssCollection();
 		$this->external     = new External();
-
 	}
 
 	public function addLine($line) {
