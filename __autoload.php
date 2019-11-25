@@ -27,4 +27,4 @@ require_once $dir . '/CKEditorPHP/core/PluginInterface.php';
 require_once $dir . '/CKEditorPHP/core/PluginFactory.php';
 require_once $dir . '/CKEditorPHP/view/JQueryView.php';
 
-CKEditorPHP_recursive_load_php($dir . '/plugins');
+CKEditorPHP_recursive_load_php($dir . '/CKEditorPHP/plugins');

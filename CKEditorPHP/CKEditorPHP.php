@@ -49,11 +49,20 @@ class CKEditorPHP {
 	}
 
 	/**
-	 * @param PluginInterface $plugin
+	 * @param $pluginName
 	 *
 	 * @return $this
 	 */
-	public function addExtraPlugin(PluginInterface $plugin) {
+	public function addExtraPlugin($pluginName) {
+
+		if ($pluginName instanceof PluginInterface) {
+			$plugin = $pluginName;
+		} elseif(isset($this->extraPluginsList[$pluginName])) {
+			$plugin = new $this->extraPluginsList[$pluginName];
+		}else{
+			throw new \RuntimeException('Invalid extra plugin!');
+		}
+
 		$this->getExtraPlugins()->add($plugin->getName(), $plugin->getName());
 		$plugin->onAdd($this);
 
@@ -203,4 +212,11 @@ class CKEditorPHP {
 		$this->contentsCss = $contentsCss;
 	}
 
+
+	private $extraPluginsList = array(
+		'pastefromword'  => 'CKEditorPHP\plugins\PastefromwordPlugin',
+		'image2'         => 'CKEditorPHP\plugins\Image2Plugin',
+		'find'           => 'CKEditorPHP\plugins\FindPlugin',
+		'copyformatting' => 'CKEditorPHP\plugins\CopyformattingPlugin',
+	);
 }
