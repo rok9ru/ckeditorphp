@@ -14,7 +14,13 @@ use CKEditorPHP\core\Collection;
 use CKEditorPHP\core\ContentsCssCollection;
 use CKEditorPHP\core\External;
 use CKEditorPHP\core\PluginInterface;
+use CKEditorPHP\plugins\ColorButtonPlugin;
+use CKEditorPHP\plugins\ColorDialogPlugin;
 use CKEditorPHP\view\JQueryView;
+use CKEditorPHP\plugins\PastefromwordPlugin;
+use CKEditorPHP\plugins\Image2Plugin;
+use CKEditorPHP\plugins\FindPlugin;
+use CKEditorPHP\plugins\CopyformattingPlugin;
 
 
 class CKEditorPHP {
@@ -56,9 +62,9 @@ class CKEditorPHP {
 
 		if ($pluginName instanceof PluginInterface) {
 			$plugin = $pluginName;
-		} elseif(isset($this->extraPluginsList[$pluginName])) {
+		} elseif (isset($this->extraPluginsList[$pluginName])) {
 			$plugin = new $this->extraPluginsList[$pluginName];
-		}else{
+		} else {
 			throw new \RuntimeException('Invalid extra plugin!');
 		}
 
@@ -213,9 +219,11 @@ class CKEditorPHP {
 
 
 	private $extraPluginsList = array(
-		'pastefromword'  => 'CKEditorPHP\plugins\PastefromwordPlugin',
-		'image2'         => 'CKEditorPHP\plugins\Image2Plugin',
-		'find'           => 'CKEditorPHP\plugins\FindPlugin',
-		'copyformatting' => 'CKEditorPHP\plugins\CopyformattingPlugin',
+		'pastefromword'  => PastefromwordPlugin::class,
+		'image2'         => Image2Plugin::class,
+		'find'           => FindPlugin::class,
+		'copyformatting' => CopyformattingPlugin::class,
+		'colordialog'    => ColorDialogPlugin::class,
+		'colorbutton'    => ColorButtonPlugin::class
 	);
 }
